@@ -2085,13 +2085,17 @@ async function sendMessage(
 
                         }
                     );
+            
+const responseText = await response.text();
 
+try {
+  data = responseText ? JSON.parse(responseText) : null;
+} catch {
+  data = responseText ? { message: responseText } : null;
+}
 
-         
-
-
-
-
+console.log("Nova API Status:", response.status);
+console.log("Nova API Response:", data);
 
 // ==========================================
 // NOVA CHAT QUOTA
